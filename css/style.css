@@ -280,6 +280,52 @@ nav {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* ================= LOGOUT BUTTON ================= */
+
+.logout-btn {
+    background: transparent;
+    border: 1.5px solid #00f7ff;
+    color: #00f7ff;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+}
+
+/* Hover effect */
+.logout-btn:hover {
+    background: #00f7ff;
+    color: #000;
+    box-shadow: 
+        0 0 10px #00f7ff,
+        0 0 20px #00f7ff,
+        0 0 40px rgba(0, 247, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* Active click */
+.logout-btn:active {
+    transform: scale(0.95);
+}
+
+/* Navbar alignment */
+nav .logout-btn {
+    margin-left: 20px;
+}
+
+/* Hide on mobile (optional) */
+@media (max-width: 768px) {
+    .logout-btn {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+}
+
+
 /* ====================
    Hero Section
    ==================== */

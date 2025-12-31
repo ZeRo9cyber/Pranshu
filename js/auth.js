@@ -1,72 +1,105 @@
-function login() {
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
+/* ================= REGISTER ================= */
 
-  if (!email || !password) return;
-
-  if (email.value.trim() && password.value.trim()) {
-    localStorage.setItem("loggedIn", "true");
-    window.location.href = "dashboard.html";
-  } else {
-    alert("Fill all fields");
-  }
-}
-
-// ===== PROTECT DASHBOARD =====
-if (window.location.pathname.includes("dashboard.html")) {
-  if (localStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "index.html";
-  }
-}
-/*====register===*/
 function register() {
-  const name = document.getElementById("regName").value;
-  const email = document.getElementById("regEmail").value;
-  const password = document.getElementById("regPassword").value;
-  const confirm = document.getElementById("regConfirm").value;
-  const msg = document.getElementById("registerMsg");
+    const name = document.getElementById("regName").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const password = document.getElementById("regPassword").value.trim();
+    const confirm = document.getElementById("regConfirm").value.trim();
+    const msg = document.getElementById("registerMsg");
 
-  if (!name || !email || !password || !confirm) {
-    msg.style.color = "red";
-    msg.innerText = "All fields are required!";
-    return;
-  }
+    if (!name || !email || !password || !confirm) {
+        msg.style.color = "red";
+        msg.innerText = "All fields are required";
+        return;
+    }
 
-  if (password !== confirm) {
-    msg.style.color = "red";
-    msg.innerText = "Passwords do not match!";
-    return;
-  }
+    if (password !== confirm) {
+        msg.style.color = "red";
+        msg.innerText = "Passwords do not match";
+        return;
+    }
 
-  // Save user (demo purpose – localStorage)
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("userPassword", password);
+    const user = {
+        name: name,
+        email: email,
+        password: password
+    };
 
-  msg.style.color = "#3cf5ff";
-  msg.innerText = "Registration successful! Redirecting...";
+    localStorage.setItem("user", JSON.stringify(user));
 
-  setTimeout(() => {
-    window.location.href = "login.html";
-  }, 1500);
-}
+    msg.style.color = "lightgreen";
+    msg.innerText = "Registration successful! Redirecting...";
 
-/*=======login funtion=====*/
-function login() {
-  const email = document.getElementById("loginEmail").value;
-  const password = document.getElementById("loginPassword").value;
-  const msg = document.getElementById("loginMsg");
-
-  const savedEmail = localStorage.getItem("userEmail");
-  const savedPassword = localStorage.getItem("userPassword");
-
-  if (email === savedEmail && password === savedPassword) {
-    msg.style.color = "#3cf5ff";
-    msg.innerText = "Login successful!";
     setTimeout(() => {
-      window.location.href = "dashboard.html";
-    }, 1000);
-  } else {
-    msg.style.color = "red";
-    msg.innerText = "Invalid credentials!";
-  }
+        window.location.href = "login.html";
+    }, 1200);
 }
+
+/* ================= LOGIN ================= */
+
+function login() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+    const msg = document.getElementById("loginMsg");
+
+    if (!email || !password) {
+        msg.style.color = "red";
+        msg.innerText = "Enter email & password";
+        return;
+    }
+
+    const storedUser = localStorage.getItem("user");
+
+    if (!storedUser) {
+        msg.style.color = "red";
+        msg.innerText = "Please register first!";
+        return;
+    }
+
+    const user = JSON.parse(storedUser);
+
+    if (email === user.email && password === user.password) {
+        localStorage.setItem("loggedIn", "true");
+        msg.style.color = "lightgreen";
+        msg.innerText = "Login successful! Redirecting...";
+
+        setTimeout(() => {
+            window.location.href = "pre-page.html";
+        }, 1000);
+    } else {
+        msg.style.color = "red";
+        msg.innerText = "Invalid email or password";
+    }
+}
+
+/* ================= PROTECT PAGES ================= */
+
+if (
+    window.location.pathname.includes("pre-page.html") ||
+    window.location.pathname.includes("dashboard.html")
+) {
+    if (localStorage.getItem("loggedIn") !== "true") {
+        window.location.href = "login.html";
+    }
+}
+
+/* ================= LOGOUT ================= */
+
+function logout() {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "index.html";
+}
+
+/* ================= SHOW / HIDE LOGOUT BUTTON ================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (!logoutBtn) return;
+
+    if (localStorage.getItem("loggedIn") === "true") {
+        logoutBtn.style.display = "inline-block";
+    } else {
+        logoutBtn.style.display = "none";
+    }
+});
