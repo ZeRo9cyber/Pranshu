@@ -230,3 +230,4 @@ window.openLogin = openLogin;
 window.closeLogin = closeLogin;
 window.sendOTP = sendOTP;
 window.verifyOTP = verifyOTP;
+
