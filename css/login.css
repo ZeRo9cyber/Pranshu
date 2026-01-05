@@ -1,5 +1,5 @@
 /* ===============================
-   LOGIN PAGE – CYBER THEME
+   LOGIN / REGISTER – CYBER THEME (FIXED)
    =============================== */
 
 :root {
@@ -10,7 +10,7 @@
   --text-muted: #9aa4ad;
 }
 
-/* Reset */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -18,56 +18,83 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Body */
+/* ===== BODY ===== */
 body {
   background: #000;
   color: var(--text-light);
+  overflow-x: hidden;
 }
 
 /* ===============================
-   LOGIN HERO BACKGROUND
+   BACKGROUND VIDEO
    =============================== */
 
-.login-hero {
-  min-height: 100vh;
-  padding-top: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -3;
+  filter: brightness(0.35) contrast(1.1);
+}
 
+.video-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
   background:
-    radial-gradient(circle at 20% 20%, rgba(60,245,255,0.08), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(60,245,255,0.08), transparent 40%),
+    linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.9)),
     repeating-linear-gradient(
       0deg,
-      rgba(60,245,255,0.05) 0px,
-      rgba(60,245,255,0.05) 1px,
+      rgba(60,245,255,0.04) 0px,
+      rgba(60,245,255,0.04) 1px,
       transparent 1px,
       transparent 40px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(60,245,255,0.05) 0px,
-      rgba(60,245,255,0.05) 1px,
+      rgba(60,245,255,0.04) 0px,
+      rgba(60,245,255,0.04) 1px,
       transparent 1px,
       transparent 40px
-    ),
-    #000;
+    );
 }
 
 /* ===============================
-   LOGIN CONTAINER
+   LOGIN / REGISTER HERO (FIX)
+   =============================== */
+
+.login-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* HEADER SPACE ONLY */
+  padding-top: 70px;
+
+  position: relative;
+  z-index: 2;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(60,245,255,0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(60,245,255,0.08), transparent 40%);
+}
+
+/* ===============================
+   CONTAINER
    =============================== */
 
 .login-container {
   width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 /* ===============================
-   LOGIN BOX
+   LOGIN / REGISTER BOX
    =============================== */
 
 .login-box {
@@ -83,7 +110,7 @@ body {
     inset 0 0 20px rgba(60,245,255,0.05);
 }
 
-/* Glow border */
+/* Glow Border */
 .login-box::before {
   content: "";
   position: absolute;
@@ -133,7 +160,7 @@ body {
 }
 
 /* ===============================
-   LOGIN BUTTON
+   BUTTON
    =============================== */
 
 .login-box button {
@@ -156,7 +183,7 @@ body {
 }
 
 /* ===============================
-   REGISTER LINK
+   SWITCH LINK
    =============================== */
 
 .switch {
@@ -168,7 +195,6 @@ body {
 .switch a {
   color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
 }
 
 .switch a:hover {
@@ -179,6 +205,7 @@ body {
    MESSAGE
    =============================== */
 
+#msg,
 #loginMsg {
   margin-top: 12px;
   font-size: 0.85rem;
@@ -195,46 +222,4 @@ body {
     padding: 30px 25px;
   }
 }
-/* ===============================
-   BACKGROUND VIDEO
-   =============================== */
-
-.bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -3;
-  filter: brightness(0.35) contrast(1.1);
-}
-
-.video-overlay {
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-    repeating-linear-gradient(
-      0deg,
-      rgba(60,245,255,0.04) 0px,
-      rgba(60,245,255,0.04) 1px,
-      transparent 1px,
-      transparent 40px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(60,245,255,0.04) 0px,
-      rgba(60,245,255,0.04) 1px,
-      transparent 1px,
-      transparent 40px
-    );
-  z-index: -2;
-}
-
-/* Make sure login stays above */
-.login-hero,
-header {
-  position: relative;
-  z-index: 2;
-}
+     

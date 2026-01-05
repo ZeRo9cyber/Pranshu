@@ -1,105 +1,80 @@
-/* ================= REGISTER ================= */
+// js/auth.js
 
-function register() {
-    const name = document.getElementById("regName").value.trim();
-    const email = document.getElementById("regEmail").value.trim();
-    const password = document.getElementById("regPassword").value.trim();
-    const confirm = document.getElementById("regConfirm").value.trim();
-    const msg = document.getElementById("registerMsg");
+// 🔐 LOGIN
+async function loginUser() {
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+  const msg = document.getElementById("loginMsg");
 
-    if (!name || !email || !password || !confirm) {
-        msg.style.color = "red";
-        msg.innerText = "All fields are required";
-        return;
-    }
+  msg.innerText = "Logging in...";
 
-    if (password !== confirm) {
-        msg.style.color = "red";
-        msg.innerText = "Passwords do not match";
-        return;
-    }
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
 
-    const user = {
-        name: name,
-        email: email,
-        password: password
-    };
+  if (error) {
+    msg.innerText = error.message;
+    return;
+  }
 
-    localStorage.setItem("user", JSON.stringify(user));
-
-    msg.style.color = "lightgreen";
-    msg.innerText = "Registration successful! Redirecting...";
-
-    setTimeout(() => {
-        window.location.href = "login.html";
-    }, 1200);
+  window.location.href = "pre-page.html";
 }
 
-/* ================= LOGIN ================= */
+// 📝 REGISTER
+async function registerUser() {
+  const name = document.getElementById("regName").value.trim();
+  const email = document.getElementById("regEmail").value.trim();
+  const password = document.getElementById("regPassword").value;
+  const confirm = document.getElementById("regConfirm").value;
+  const msg = document.getElementById("msg");
 
-function login() {
-    const email = document.getElementById("loginEmail").value.trim();
-    const password = document.getElementById("loginPassword").value.trim();
-    const msg = document.getElementById("loginMsg");
+  msg.style.color = "red";
 
-    if (!email || !password) {
-        msg.style.color = "red";
-        msg.innerText = "Enter email & password";
-        return;
+  if (!name || !email || !password || !confirm) {
+    msg.innerText = "All fields are required";
+    return;
+  }
+
+  if (password.length < 6) {
+    msg.innerText = "Password must be 6+ characters";
+    return;
+  }
+
+  if (password !== confirm) {
+    msg.innerText = "Passwords do not match";
+    return;
+  }
+
+  msg.innerText = "Creating account...";
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: { full_name: name }
     }
+  });
 
-    const storedUser = localStorage.getItem("user");
+  if (error) {
+    msg.innerText = error.message;
+    return;
+  }
 
-    if (!storedUser) {
-        msg.style.color = "red";
-        msg.innerText = "Please register first!";
-        return;
-    }
-
-    const user = JSON.parse(storedUser);
-
-    if (email === user.email && password === user.password) {
-        localStorage.setItem("loggedIn", "true");
-        msg.style.color = "lightgreen";
-        msg.innerText = "Login successful! Redirecting...";
-
-        setTimeout(() => {
-            window.location.href = "pre-page.html";
-        }, 1000);
-    } else {
-        msg.style.color = "red";
-        msg.innerText = "Invalid email or password";
-    }
+  msg.style.color = "#3cf5ff";
+  msg.innerText = "Verification mail sent. Check inbox / spam.";
 }
 
-/* ================= PROTECT PAGES ================= */
-
-if (
-    window.location.pathname.includes("pre-page.html") ||
-    window.location.pathname.includes("dashboard.html")
-) {
-    if (localStorage.getItem("loggedIn") !== "true") {
-        window.location.href = "login.html";
-    }
+// 🔒 PROTECTED PAGE CHECK
+async function protectPage() {
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) {
+    window.location.href = "login.html";
+  }
 }
 
-/* ================= LOGOUT ================= */
-
-function logout() {
-    localStorage.removeItem("loggedIn");
-    window.location.href = "index.html";
+// 🚪 LOGOUT
+async function logout() {
+  await supabase.auth.signOut();
+  window.location.href = "index.html";
 }
-
-/* ================= SHOW / HIDE LOGOUT BUTTON ================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-    const logoutBtn = document.getElementById("logoutBtn");
-
-    if (!logoutBtn) return;
-
-    if (localStorage.getItem("loggedIn") === "true") {
-        logoutBtn.style.display = "inline-block";
-    } else {
-        logoutBtn.style.display = "none";
-    }
-});

@@ -1,78 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zero | Cybersecurity Analyst</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zero | Cybersecurity Analyst</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 </head>
+
 <body>
-    <script src="auth.js"></script>
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <a href="#home"><span>&lt;</span> ZeRo <span>/&gt;</span></a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#CyberResources">Article</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li class="nav-item">
-                        <button id="logoutBtn" class="logout-btn" onclick="logout()">Logout</button>
-                    </li>
-
-                </ul>
-                <div class="hamburger">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-            </nav>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <a href="#home"><span>&lt;</span> ZeRo <span>/&gt;</span></a>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Pranshu Verman</h1>
-                    <h2>Cybersecurity Analyst | Web & Network Penetration Tester | Bug Bounty & VAPT | Helping Businesses Build Digital Trust & Security</h2>
-                    <p>I am a Cybersecurity & Ethical Hacking professional with solid hands-on experience gained through real-world labs, internship exposure, and continuous security practice. I focus on identifying vulnerabilities, strengthening digital defenses, and supporting secure system development.
-    </p>
-                    <div class="cta-buttons">
-                        <a href="#contact" class="btn primary-btn">Get In Touch</a>
-                        <a href="#projects" class="btn secondary-btn">View Projects</a>
-                    </div>
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/pranshuverman-2b39b9241/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/ZeRo9cyber" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/x.pranshu_09/" target="_blank"><i class="fas fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="security-graphic">
-                        <div class="shield">
-                            <i class="fas fa-shield-alt"></i>
-                            <div class="ripple"></div>
-                        </div>
-                        <div class="binary">01101001 01101110 01100110 01101111 01110011 01100101 01100011</div>
-                    </div>
-                </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#secure-access">Article</a></li>
+          <li><a href="#contact">Contact</a></li>
+
+          <li class="nav-item">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+          </li>
+        </ul>
+
+        <div class="hamburger">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Pranshu Verman</h1>
+          <h2>
+            Cybersecurity Analyst | Web & Network Penetration Tester | Bug
+            Bounty & VAPT
+          </h2>
+          <p>
+            I am a Cybersecurity & Ethical Hacking professional with hands-on
+            experience in vulnerability assessment, penetration testing, and
+            security research.
+          </p>
+
+          <div class="cta-buttons">
+            <a href="#contact" class="btn primary-btn">Get In Touch</a>
+            <a href="#projects" class="btn secondary-btn">View Projects</a>
+          </div>
+
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/pranshuverman-2b39b9241/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/ZeRo9cyber" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/x.pranshu_09/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="security-graphic">
+            <div class="shield">
+              <i class="fas fa-shield-alt"></i>
+              <div class="ripple"></div>
             </div>
+            <div class="binary">
+              01101001 01101110 01100110 01101111 01110011 01100101 01100011
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
     <!-- About -->
     <section id="about" class="about">
@@ -742,50 +763,44 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="#home"><span>&lt;</span> ZeRo <span>/&gt;</span></a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/pranshuverman-2b39b9241/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Zero" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://medium.com/@pranshuverman-2b39b9241" target="_blank"><i class="fab fa-medium"></i></a>
-                    <a href="https://www.credly.com/users/pranshu" target="_blank"><i class="fas fa-award"></i></a>
-                    <a href="https://tryhackme.com/p/info.pranshu" target="_blank"><i class="fas fa-shield-alt"></i></a>
-                    <a href="https://linktr.ee/pranshu" target="_blank"><i class="fas fa-link"></i></a>
-                </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2025 Pranshu Verman. All Rights Reserved.</p>
-                </div>
-            </div>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <a href="#home"><span>&lt;</span> ZeRo <span>/&gt;</span></a>
         </div>
-    </footer>
 
-    <!-- Theme toggle -->
-    <div class="theme-toggle">
-        <i class="fas fa-moon"></i>
-        <i class="fas fa-sun"></i>
-    </div>
-    
-
-    <div id="certificatePopup" class="certificate-popup">
-        <div class="popup-content">
-            <img id="popupImage" src="" alt="Certificate">
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/pranshuverman-2b39b9241/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/ZeRo9cyber" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://medium.com" target="_blank"><i class="fab fa-medium"></i></a>
         </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Pranshu Verman. All Rights Reserved.</p>
+        </div>
+      </div>
     </div>
+  </footer>
+
+  <!-- ================= SCRIPTS (ORDER MATTERS) ================= -->
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Supabase Init -->
+  <script src="js/supabase-auth.js"></script>
+
+  <!-- Auth Logic -->
+  <script src="js/auth.js"></script>
+
+  <!-- UI Script -->
+  <script src="js/script.js"></script>
+
+  <!-- 🔒 PROTECT PAGE -->
+  <script>
+    protectPage();
+  </script>
 
 </body>
-
-<script src="js/script.js"></script>
-<script src="js/auth.js"></script>
-
 </html>
